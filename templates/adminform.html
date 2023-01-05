@@ -1,0 +1,281 @@
+{% extends 'headerfooter.html' %}
+
+{% block title%}  Admin  {% endblock %}
+
+{% block style%}  .nav-tabs .nav-link.active {
+        color: white;
+        font-weight:bold;
+        background-color: rgb(163, 133, 77);
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        font-size: large;
+    }
+
+    .nav-link{
+        font-family: 'Abril Fatface', cursive;
+        color: black;
+        font-size: large;
+    }
+    .nav-link:hover{
+        color: black;
+        outline: 1px solid rgb(163, 133, 77);
+    }
+
+    .image-upload>input {
+            display: none;
+        }
+
+        img:hover {
+            outline: 3px solid black;
+
+        }
+
+        .yellowfont {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 25px;
+            color: rgb(163, 133, 77);
+        }
+
+        .form-control {
+            border: none;
+            background-color: #f1f1f1;
+        }
+
+        .form-control:focus {
+            outline: 1px double black;
+            box-shadow: none;
+            background-color: #f1f1f1;
+        }
+
+        .title {
+            color: rgb(163, 133, 77);
+        }  {% endblock %}
+
+{% block body%}  
+
+  <section class=" mt-5 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center ">
+                    <nav class="nav-justified ">
+                      <div class="nav nav-tabs " id="nav-tab" role="tablist">
+                        <a class="nav-item  nav-link active" id="pop1-tab" data-bs-toggle="tab" href="#pop1" role="tab" aria-bs-controls="pop1" aria-bs-selected="true">Add Destination</a>
+                        <a class="nav-item nav-link" id="pop2-tab" data-bs-toggle="tab" href="#pop2" role="tab" aria-bs-controls="pop2" aria-bs-selected="false">Add Guide Details</a>
+                        <a class="nav-item nav-link" id="pop3-tab" data-bs-toggle="tab" href="#pop3" role="tab" aria-bs-controls="pop3" aria-bs-selected="false">Add Premium Packages</a>
+                        
+                      </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                      <div class="tab-pane fade show active" id="pop1" role="tabpanel" aria-bs-labelledby="pop1-tab">
+                            <div class="pt-3"></div>
+
+                            <!-- Add Destination starts -->
+                            <div class="container">
+                                <!-- <h2 class="fw-bold d-inline-flex text-start" style="border-bottom: 7px solid rgb(163, 133, 77);">Add Destination</h2> -->
+                                <div class="row mt-lg-3">
+                                    <div class="image-upload col-lg-6 text-center mt-4">
+                                        <h1 class="yellowfont me-3">Add Photo</h1>
+                                        <label for="file-input" style="border: 2px solid black; cursor: pointer;"> <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAbFBMVEX///8AAADHx8fDw8MvLy9bW1uvr6/r6+s3NzfLy8sbGxuHh4efn59HR0c/Pz8rKysjIyMKCgrV1dX19fVUVFS5ubmAgIBgYGDg4ODv7+8dHR2UlJRsbGzR0dGlpaXj4+OOjo4SEhJ2dnacnJxukJ8hAAADP0lEQVR4nO3caXeiMBiGYeNCbNVKcK2jTK3//z+OdeZoNggEsjHP9bFwKLe+tTVCRyMAAAAAAAAAAAAAAAAAgC6KN9El9AnZmhPRe+gTsoWQ2CAkNgiJDUJig5DYICQ2CIkNQmKDkNggJDYIiU1qIfI63NNaCrlW7RjJyp38wLcXyVPVe0i2tFVmXZ7c3kOmXY7FZpNhhNytjgMJISwbSAgh5VBC2HggISTfDCSELIYSYvFLNs4QshtKyH4oIduhhMzDh3xSW1vuoNPwIfZmnUKWiwon6XxZ1Y6/4gip5P+tLkLqIcQaQuohxBpC6iHEZLP72n/tPtUNaYXQM3scjh2U9aukQnbX5wGZvOqTUkgmHPImbkwopGDiMcX1q4RCVtIxxdNNJ6QgMmGxJJ2QvRJy5jenE7IlMmGNIZ0QdX3gxG9OJ+RDCcn5zemEzIjso2pz3CE3JURYGQ0aQufL5oek0u9DQgp+c8gQuibk0PxTmW/pmAdhq6MQeeVOtw5HH5dHrAvNJq2NeDnFiQpbHYU0QP+dF2s8Xsecf46lByBYCH09vo3Hi77+3PqQ35CECqH8nDQfr8n250eerdRP0wOFUHHem4/XfcAu2qsbwoRQ+TKoNq9eekFC1I4246UXIkTX0W68NAKE6Du6jpf/kMqObuPlP0T9c9wwXmWjz//9h1Q/IdrxKu/7b3+bDxtbiDRe5d+92cL44xNdCL+GWL72XZvmy1kI/9G/sOZsCnmOVynuaZgvZyH8cprwntQc8hivMpe/Wj9fUYYQtlcyHoE18xVnSKXq+UospHq+UgshJNfPV3oh9/nSvSFJMUQ7X0mG6OYr0RB1vpINkecr3RA/i9heQnx8rIAQhCAEIQhBiKOQXdYXH9ei1IQ4ghAThFhCiAlCLCHEBCGWEGLCh0zH7q1chahXt/rT/l7dGueAIe3vnq6hXkvpT/v72WscA4bY/B+Oat3vrLaVm0+ujcz8HR25mU+uFfl+D196fc36Qd+DdFw7XsGmcbkG6GDW/5qqRtHf0k9TpzcHHaPR5lu5oN2ts+ZWy37Qhb+X4em+wXVdHWyK8cS9cdH1glsAAAAAAAAAAAAAAAAA+O/8AekkR1af4q8IAAAAAElFTkSuQmCC" /></label>
+                                        <input id="file-input" type="file" />
+                                    </div>
+                        
+                                    <div class="col-lg-6">
+                                        <form action="">
+                                            <div class="form-group row mb-lg-3 mb-sm-1 mt-4">
+                                                <label for="titleinput"
+                                                    class="col-sm-2 col-form-label col-form-label-lg fw-bold fs-4 title">Title:</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" class="form-control form-control-lg rounded-0" id="titleinput">
+                                                </div>
+                                            </div>
+                        
+                                            <div class="form-group row mt-5 mb-3">
+                                                <label for="priceinput"
+                                                    class="col-sm-2 col-form-label col-form-label-lg fs-4 fw-bold title">Price:</label>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group input-group-lg ">
+                                                        <div class="input-group-prepend ">
+                                                            <div class="input-group-text rounded-0"
+                                                                style="line-height: 2.1; background-color: rgb(163, 133, 77); color: white;">Rs
+                                                            </div>
+                                                        </div>
+                                                        <input type="number" class="form-control form-control-lg rounded-0" id="priceinput">
+                                                    </div>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="form-group row mt-5 mb-3">
+                                                <label for="priceinput"
+                                                    class="col-sm-2 col-form-label col-form-label-lg fs-4 fw-bold title">Day:</label>
+                                                <div class="col-sm-10">
+                                                    <div class="input-group input-group-lg ">
+                                                        <input type="" class="form-control form-control-lg rounded-0" id="priceinput">
+                                                        <div class="input-group-prepend ">
+                                                            <button class="btn dropdown-toggle rounded-0" type="button" style="line-height: 2.1; color: white; background-color: rgb(163, 133, 77);" data-bs-toggle="dropdown" aria-expanded="false">Day</button>
+                                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                              <li><a class="dropdown-item" href="#">Day 1</a></li>
+                                                              <li><a class="dropdown-item" href="#">Day 2</a></li>
+                                                              <li><a class="dropdown-item" href="#">Day 3</a></li>
+                                                              <li><a class="dropdown-item" href="#">Day 4</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                    
+                                            <div class="form-group row mt-5 mb-3">
+                                                <label for="titleinput" class="col-sm-2 col-form-label col-form-label-lg"></label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control rounded-0" name="text" rows="5"
+                                                        placeholder="Description..."></textarea><br />
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        
+                                <div class="row d-flex">
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-success btn-lg fs-4 px-4" role="button">Save</a>
+                                        <a href="#" class="btn btn-danger fs-4 mx-2 btn-lg" role="button">Cancel</a>
+                                    </div> 
+                                </div>
+                            </div>
+                          </div>
+                          <!-- Add Destination ends -->
+
+                          
+                          <!-- Add Guide Details starts -->
+                      <div class="tab-pane fade" id="pop2" role="tabpanel" aria-bs-labelledby="pop2-tab">
+                           <div class="pt-3"></div>
+                           
+                           <div class="container">
+                            <div class="row mt-lg-3">
+                                <div class="image-upload col-lg-6 text-center mt-4">
+                                    <h1 class="yellowfont me-3">Add Photo</h1>
+                                    <label for="file-input" style="border: 2px solid black; cursor: pointer;"> <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAbFBMVEX///8AAADHx8fDw8MvLy9bW1uvr6/r6+s3NzfLy8sbGxuHh4efn59HR0c/Pz8rKysjIyMKCgrV1dX19fVUVFS5ubmAgIBgYGDg4ODv7+8dHR2UlJRsbGzR0dGlpaXj4+OOjo4SEhJ2dnacnJxukJ8hAAADP0lEQVR4nO3caXeiMBiGYeNCbNVKcK2jTK3//z+OdeZoNggEsjHP9bFwKLe+tTVCRyMAAAAAAAAAAAAAAAAAgC6KN9El9AnZmhPRe+gTsoWQ2CAkNgiJDUJig5DYICQ2CIkNQmKDkNggJDYIiU1qIfI63NNaCrlW7RjJyp38wLcXyVPVe0i2tFVmXZ7c3kOmXY7FZpNhhNytjgMJISwbSAgh5VBC2HggISTfDCSELIYSYvFLNs4QshtKyH4oIduhhMzDh3xSW1vuoNPwIfZmnUKWiwon6XxZ1Y6/4gip5P+tLkLqIcQaQuohxBpC6iHEZLP72n/tPtUNaYXQM3scjh2U9aukQnbX5wGZvOqTUkgmHPImbkwopGDiMcX1q4RCVtIxxdNNJ6QgMmGxJJ2QvRJy5jenE7IlMmGNIZ0QdX3gxG9OJ+RDCcn5zemEzIjso2pz3CE3JURYGQ0aQufL5oek0u9DQgp+c8gQuibk0PxTmW/pmAdhq6MQeeVOtw5HH5dHrAvNJq2NeDnFiQpbHYU0QP+dF2s8Xsecf46lByBYCH09vo3Hi77+3PqQ35CECqH8nDQfr8n250eerdRP0wOFUHHem4/XfcAu2qsbwoRQ+TKoNq9eekFC1I4246UXIkTX0W68NAKE6Du6jpf/kMqObuPlP0T9c9wwXmWjz//9h1Q/IdrxKu/7b3+bDxtbiDRe5d+92cL44xNdCL+GWL72XZvmy1kI/9G/sOZsCnmOVynuaZgvZyH8cprwntQc8hivMpe/Wj9fUYYQtlcyHoE18xVnSKXq+UospHq+UgshJNfPV3oh9/nSvSFJMUQ7X0mG6OYr0RB1vpINkecr3RA/i9heQnx8rIAQhCAEIQhBiKOQXdYXH9ei1IQ4ghAThFhCiAlCLCHEBCGWEGLCh0zH7q1chahXt/rT/l7dGueAIe3vnq6hXkvpT/v72WscA4bY/B+Oat3vrLaVm0+ujcz8HR25mU+uFfl+D196fc36Qd+DdFw7XsGmcbkG6GDW/5qqRtHf0k9TpzcHHaPR5lu5oN2ts+ZWy37Qhb+X4em+wXVdHWyK8cS9cdH1glsAAAAAAAAAAAAAAAAA+O/8AekkR1af4q8IAAAAAElFTkSuQmCC" /></label>
+                                    <input id="file-input" type="file" />
+                                </div>
+                    
+                                <div class="col-lg-6">
+                                    <form action="">
+                                        <div class="form-group row mb-lg-3 mb-sm-1">
+                                            <label for="titleinput" class="col-sm-2 col-form-label fs-4 col-form-label-lg fw-bold title">Name:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-lg rounded-0" id="titleinput"
+                                                    placeholder="">
+                                            </div>
+                                        </div>
+                    
+                                        <div class="form-group row mt-5 mb-3">
+                                            <label for="priceinput" class="col-sm-2  col-form-label fs-4 col-form-label-lg fw-bold title">Price:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-lg ">
+                                                    <div class="input-group-prepend ">
+                                                        <div class="input-group-text"
+                                                            style="line-height: 2.1; background-color: rgb(163, 133, 77); color: white;">Rs
+                                                        </div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-lg rounded-0" id="priceinput"
+                                                        placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="form-group mt-5 row mb-3">
+                                            <label for="titleinput" class="col-sm-2 col-form-label col-form-label-lg"></label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control rounded-0" name="text" rows="5"
+                                                    placeholder="Description..."></textarea><br />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    
+                            <div class="row d-flex">
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success fs-4 btn-lg px-4" role="button">Save</a>
+                                    <a href="#" class="btn btn-danger fs-4 mx-2 btn-lg" role="button">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- Add Guide Details ends -->
+
+                      <!-- Add Premium Packages starts -->
+                      <div class="tab-pane fade" id="pop3" role="tabpanel" aria-bs-labelledby="pop3-tab">
+                           <div class="pt-3"></div>
+                           
+                           <div class="container">
+                            <div class="row mt-lg-3">
+                                <div class="image-upload col-lg-6 text-center mt-4">
+                                    <h1 class="yellowfont me-3">Add Photo</h1>
+                                    <label for="file-input" style="border: 2px solid black; cursor: pointer;"> <img
+                                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAbFBMVEX///8AAADHx8fDw8MvLy9bW1uvr6/r6+s3NzfLy8sbGxuHh4efn59HR0c/Pz8rKysjIyMKCgrV1dX19fVUVFS5ubmAgIBgYGDg4ODv7+8dHR2UlJRsbGzR0dGlpaXj4+OOjo4SEhJ2dnacnJxukJ8hAAADP0lEQVR4nO3caXeiMBiGYeNCbNVKcK2jTK3//z+OdeZoNggEsjHP9bFwKLe+tTVCRyMAAAAAAAAAAAAAAAAAgC6KN9El9AnZmhPRe+gTsoWQ2CAkNgiJDUJig5DYICQ2CIkNQmKDkNggJDYIiU1qIfI63NNaCrlW7RjJyp38wLcXyVPVe0i2tFVmXZ7c3kOmXY7FZpNhhNytjgMJISwbSAgh5VBC2HggISTfDCSELIYSYvFLNs4QshtKyH4oIduhhMzDh3xSW1vuoNPwIfZmnUKWiwon6XxZ1Y6/4gip5P+tLkLqIcQaQuohxBpC6iHEZLP72n/tPtUNaYXQM3scjh2U9aukQnbX5wGZvOqTUkgmHPImbkwopGDiMcX1q4RCVtIxxdNNJ6QgMmGxJJ2QvRJy5jenE7IlMmGNIZ0QdX3gxG9OJ+RDCcn5zemEzIjso2pz3CE3JURYGQ0aQufL5oek0u9DQgp+c8gQuibk0PxTmW/pmAdhq6MQeeVOtw5HH5dHrAvNJq2NeDnFiQpbHYU0QP+dF2s8Xsecf46lByBYCH09vo3Hi77+3PqQ35CECqH8nDQfr8n250eerdRP0wOFUHHem4/XfcAu2qsbwoRQ+TKoNq9eekFC1I4246UXIkTX0W68NAKE6Du6jpf/kMqObuPlP0T9c9wwXmWjz//9h1Q/IdrxKu/7b3+bDxtbiDRe5d+92cL44xNdCL+GWL72XZvmy1kI/9G/sOZsCnmOVynuaZgvZyH8cprwntQc8hivMpe/Wj9fUYYQtlcyHoE18xVnSKXq+UospHq+UgshJNfPV3oh9/nSvSFJMUQ7X0mG6OYr0RB1vpINkecr3RA/i9heQnx8rIAQhCAEIQhBiKOQXdYXH9ei1IQ4ghAThFhCiAlCLCHEBCGWEGLCh0zH7q1chahXt/rT/l7dGueAIe3vnq6hXkvpT/v72WscA4bY/B+Oat3vrLaVm0+ujcz8HR25mU+uFfl+D196fc36Qd+DdFw7XsGmcbkG6GDW/5qqRtHf0k9TpzcHHaPR5lu5oN2ts+ZWy37Qhb+X4em+wXVdHWyK8cS9cdH1glsAAAAAAAAAAAAAAAAA+O/8AekkR1af4q8IAAAAAElFTkSuQmCC" /></label>
+                                    <input id="file-input" type="file" />
+                                </div>
+                    
+                                <div class="col-lg-6">
+                                    <form action="">
+                                        <div class="form-group row mb-lg-3 mb-sm-1">
+                                            <label for="titleinput" class="col-sm-2 col-form-label col-form-label-lg fs-4 fw-bold title">Title:</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-lg rounded-0" id="titleinput"
+                                                    placeholder="">
+                                            </div>
+                                        </div>
+                    
+                                        <div class="form-group row mb-3">
+                                            <label for="priceinput" class="col-sm-2 col-form-label col-form-label-lg fs-4 fw-bold title">Price:</label>
+                                            <div class="col-sm-10">
+                                                <div class="input-group input-group-lg ">
+                                                    <div class="input-group-prepend ">
+                                                        <div class="input-group-text"
+                                                            style="line-height: 2.1; background-color: rgb(163, 133, 77); color: white;">Rs
+                                                        </div>
+                                                    </div>
+                                                    <input type="number" class="form-control form-control-lg rounded-0" id="priceinput"
+                                                        placeholder="">
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                                        <div class="form-group row mb-3">
+                                            <label for="titleinput" class="col-sm-2 col-form-label col-form-label-lg"></label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control rounded-0" name="text" rows="5"
+                                                    placeholder="Description..."></textarea><br />
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    
+                            <div class="row d-flex">
+                                <div class="text-center">
+                                    <a href="#" class="btn btn-success btn-lg fs-4 px-4" role="button">Save</a>
+                                    <a href="#" class="btn btn-danger btn-lg mx-2 fs-4" role="button">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <!-- Add Premium Packages ends -->
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+{% endblock %}
+
